@@ -7,11 +7,6 @@
 
 //main variables
 const CHAR_SIZE = 8;
-let H0 = 0x67452301;
-let H1 = 0xEFCDAB89;
-let H2 = 0x98BADCFE;
-let H3 = 0x10325476;
-let H4 = 0xC3D2E1F0;
 
 /**
  * Adds padding to binary/hex string represention
@@ -99,6 +94,13 @@ function preProcess(message) {
  * @return {string} - message digest (hash value)
  */
 function SHA1(message) {
+    //main variables
+    let H0 = 0x67452301;
+    let H1 = 0xEFCDAB89;
+    let H2 = 0x98BADCFE;
+    let H3 = 0x10325476;
+    let H4 = 0xC3D2E1F0;
+
     //pre-process message and split into 512 bit chunks
     let bits = preProcess(message);
     let chunks = chunkify(bits, 512);
@@ -172,6 +174,9 @@ function SHA1(message) {
 
     return HH;
 }
+
+console.log(SHA1("A Test"));
+console.log(SHA1("A Test"));
 
 //export SHA1 function
 module.exports = SHA1;
